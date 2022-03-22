@@ -53,6 +53,9 @@ You can use a local mongo db or the following db: https://mockaroo.com/
 You can use the following design or any other design you’d like:
 
 
+<img width="1104" alt="Screen Shot 2022-03-22 at 19 21 43" src="https://user-images.githubusercontent.com/33543070/159538946-e977754c-9580-43b6-9383-3a45b9605d5d.png">
 
 
+
+<img width="599" alt="Screen Shot 2022-03-22 at 19 22 01" src="https://user-images.githubusercontent.com/33543070/159538990-ff14e72c-fd4e-471c-9679-1998fccbab97.png">
 

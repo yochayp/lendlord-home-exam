@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^3.2.0",
     "bunyan": "^1.8.15",
     "dotenv": "^16.0.0",
     "koa": "^2.13.4",

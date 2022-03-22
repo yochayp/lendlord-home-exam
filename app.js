@@ -7,6 +7,7 @@ require('events').EventEmitter.defaultMaxListeners = 5
 
 require('dotenv').config({ path: `./.env.${APP_ENV}` })
 const Koa = require('koa')
+const koaCors = require('@koa/cors')
 const app = new Koa()
 
 const model = require('./models')
@@ -27,6 +28,14 @@ if (runMode === 'app') {
         uploadDir: './tmp',
         keepExtensions: true
       }
+    })
+  )
+
+  app.use(
+    koaCors({
+      methods: 'POST, GET, PUT, DELETE, OPTIONS',
+      allowMethods: 'Origin, X-Requested-With, Content-Type, Accept',
+      credentials: true
     })
   )
 

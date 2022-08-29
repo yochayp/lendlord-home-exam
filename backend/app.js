@@ -34,7 +34,7 @@ if (runMode === 'app') {
   app.use(
     koaCors({
       methods: 'POST, GET, PUT, DELETE, OPTIONS',
-      allowMethods: 'Origin, X-Requested-With, Content-Type, Accept',
+      // allowMethods: 'Origin, X-Requested-With, Content-Type, Accept',
       credentials: true
     })
   )

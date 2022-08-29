@@ -1,7 +1,7 @@
 const USER_ROLES = {
-  MANAGER: 'manager',
-  WORKER: 'worker',
-  DRIVER: 'driver'
+  MANAGER: 'Manager',
+  WORKER: 'Worker',
+  DRIVER: 'Driver'
 }
 
 module.exports = { USER_ROLES }

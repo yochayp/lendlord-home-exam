@@ -1,4 +1,3 @@
-const { identity } = require('lodash');
 const Users = require('../lib/users')
 const users = new Users()
 
@@ -30,7 +29,7 @@ module.exports = class {
 
   async getManagers (ctx) {
     try {
-      const result = await users.findUsers({userType:"Manager"});
+      const result = await users.findManagers();
       ctx.body = result;
     } catch (error) {
       ctx.response.status = 400;
@@ -41,21 +40,12 @@ module.exports = class {
   async findUsers(ctx){
     const limit = parseInt(ctx.query.npp);
     const page = parseInt(ctx.query.page);
-
-    const skip = limit*page;
-    const usersCollection = await  users.findUsers({},{skip:skip,limit:limit},{});
-    const totalUsers = await users.count();
-
-    const totalPages = Math.ceil(totalUsers / limit);
-    const currentPage = Math.ceil(totalUsers % page);
-
-    ctx.body = {
-      data: usersCollection,
-      paging: {
-        total: totalUsers,
-        page: currentPage,
-        pages: totalPages,
-      },
+    try {      
+      const res = await  users.findUsers({},{page,limit});
+      ctx.body = res;
+    } catch (error) {
+      ctx.response.status = 400;
+      ctx.message = error.message;
     }
     }
   

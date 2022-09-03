@@ -76,8 +76,28 @@ module.exports = class {
     return result
   }
 
-  async findUsers(query, projection, limit) {
-    const result = await this.userRepo.find(query, projection, limit)
+  async findUsers(query,options) {
+    const { page,limit } = options;
+
+    const skip = limit*page;
+    const usersCollection = await this.userRepo.find(query,{skip:skip,limit:limit});
+    const totalUsers = await this.count();
+
+    const totalPages = Math.ceil(totalUsers / limit);
+    const currentPage = Math.ceil(totalUsers % page);
+
+    return {
+      data: usersCollection,
+      paging: {
+        total: totalUsers,
+        page: currentPage,
+        pages: totalPages,
+      },
+    }
+  }
+
+  async findManagers() {
+    const result = await this.userRepo.find({userType:"Manager"});
     return result
   }
 

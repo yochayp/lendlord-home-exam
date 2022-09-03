@@ -26,9 +26,13 @@ function App() {
   useEffect(async () => {
     setIsLoading(true);
     setIsError(false);
-    let res = await fetchUsers(page,npp);
-    setUsers(res.data);
-    setTotalPages(res.paging.pages)
+    try {
+      let res = await fetchUsers(page,npp);
+      setUsers(res.data);
+      setTotalPages(res.paging.pages)
+    } catch (error) {
+      setIsError(error.message);
+    }
     setIsLoading(false);
   }, [page]);
 

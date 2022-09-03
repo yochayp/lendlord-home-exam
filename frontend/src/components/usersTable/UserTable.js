@@ -3,8 +3,8 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import './usersTable.css'
 
 const UserTable = ({ users ,onDeleteUser ,userFormToggle }) => {
-    return (
-
+    return (<>
+            {users.length ? 
         <table class="table ">
             <thead>
                 <tr>
@@ -17,7 +17,7 @@ const UserTable = ({ users ,onDeleteUser ,userFormToggle }) => {
                     <th scope="col">Manager</th>
                     <th scope="col">Actions</th>
                 </tr>
-            </thead>
+            </thead> 
             <tbody>
                 {users.map((user) => (
                     <tr key={user._id} className="">
@@ -39,9 +39,16 @@ const UserTable = ({ users ,onDeleteUser ,userFormToggle }) => {
                             </div>}
                         </td>
                     </tr>
-                ))}
+                ))
+                }
             </tbody>
         </table>
+        :
+        <div>
+            There's No Users found
+        </div>
+        }
+    </>
     )
 }
 
